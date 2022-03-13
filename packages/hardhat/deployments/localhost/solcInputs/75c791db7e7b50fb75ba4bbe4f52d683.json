@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/CanvasNFT.sol": {
+      "content": "pragma solidity >=0.6.7;\n//SPDX-License-Identifier: MIT\n\n// import \"hardhat/console.sol\";\n// import \"@openzeppelin/contracts/access/Ownable.sol\"; \n// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol\n\ncontract CanvasNFT{\n  event SetPurpose(address sender, string purpose);\n\n  string public purpose = \"Building Unstoppable Apps!!!\";\n\n  constructor() payable{\n    // what should we do on deploy?\n  }\n\n  function setPurpose(string memory newPurpose) public{\n      purpose = newPurpose;\n      // console.log(msg.sender,\"set purpose to\",purpose);\n      emit SetPurpose(msg.sender, purpose);\n  }\n\n  // to support receiving ETH by default\n  receive() external payable {}\n  fallback() external payable {}\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

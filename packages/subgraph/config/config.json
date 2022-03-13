@@ -1,5 +1,10 @@
 {
   "localhost_YourContractAddress": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
   "kovanOptimism_YourContractAddress": "0x452717041C371DdeBc9Dc712afa7D511dbE01CC2",
-  "kovanOptimism_YourContract2Address": "0xe38929F49A9c3eacD0fc93E47A5c505C1be4449D"
+  "kovanOptimism_YourContract2Address": "0xe38929F49A9c3eacD0fc93E47A5c505C1be4449D",
+  "localhost_PixelNFTAddress": "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f",
+  "localhost_YourContract2Address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "localhost_CanvasNFTAddress": "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1",
+  "kovanOptimism_CanvasNFTAddress": "0x1003752F4Acc5Dd14716dFb6BCc0503e6D255A08",
+  "kovanOptimism_PixelNFTAddress": "0xB4e6B89E189c17A030946c412aE84e7590fBf78d"
 }

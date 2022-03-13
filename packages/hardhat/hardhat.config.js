@@ -26,7 +26,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "kovanOptimism";
+const defaultNetwork = "localhost";
 
 const mainnetGwei = 21;
 
@@ -262,6 +262,15 @@ module.exports = {
   },
   solidity: {
     compilers: [
+      {
+        version: "0.8.10",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
       {
         version: "0.8.4",
         settings: {

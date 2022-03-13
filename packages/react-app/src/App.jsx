@@ -29,7 +29,7 @@ import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
-import { Home, ExampleUI, Hints, Subgraph } from "./views";
+import { Home, Hints, Subgraph, ExampleUI, MintUI, CanvasUI } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
 const { ethers } = require("ethers");
@@ -53,7 +53,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const initialNetwork = NETWORKS.kovanOptimism; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const initialNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -166,8 +166,8 @@ function App(props) {
     "0x34aA3F359A9D614239015126635CE7732c18fDF3",
   ]);
 
-  // keep track of a variable from the contract in the local React state:
-  const purpose = useContractReader(readContracts, "YourContract", "purpose");
+  // // keep track of a variable from the contract in the local React state:
+  // const purpose = useContractReader(readContracts, "YourContract", "purpose");
 
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
@@ -263,18 +263,21 @@ function App(props) {
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
         </Menu.Item>
-        <Menu.Item key="/hints">
+        {/* <Menu.Item key="/hints">
           <Link to="/hints">Hints</Link>
+        </Menu.Item> */}
+        <Menu.Item key="/mintui">
+          <Link to="/mintui">MintUI</Link>
         </Menu.Item>
-        <Menu.Item key="/exampleui">
-          <Link to="/exampleui">ExampleUI</Link>
+        <Menu.Item key="/canvasui">
+          <Link to="/canvasui">CanvasUI</Link>
         </Menu.Item>
-        <Menu.Item key="/mainnetdai">
+        {/* <Menu.Item key="/mainnetdai">
           <Link to="/mainnetdai">Mainnet DAI</Link>
-        </Menu.Item>
-        <Menu.Item key="/subgraph">
+        </Menu.Item> */}
+        {/* <Menu.Item key="/subgraph">
           <Link to="/subgraph">Subgraph</Link>
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
 
       <Switch>
@@ -290,7 +293,7 @@ function App(props) {
             */}
 
           <Contract
-            name="YourContract"
+            name="PixelNFT"
             price={price}
             signer={userSigner}
             provider={localProvider}
@@ -299,8 +302,8 @@ function App(props) {
             contractConfig={contractConfig}
           />
 
-<Contract
-            name="YourContract2"
+          <Contract
+            name="CanvasNFT"
             price={price}
             signer={userSigner}
             provider={localProvider}
@@ -309,29 +312,43 @@ function App(props) {
             contractConfig={contractConfig}
           />
         </Route>
-        <Route path="/hints">
+        {/* <Route path="/hints">
           <Hints
             address={address}
             yourLocalBalance={yourLocalBalance}
             mainnetProvider={mainnetProvider}
             price={price}
           />
-        </Route>
-        <Route path="/exampleui">
-          <ExampleUI
+        </Route> */}
+        <Route path="/mintui">
+          <MintUI
             address={address}
             userSigner={userSigner}
             mainnetProvider={mainnetProvider}
             localProvider={localProvider}
+            yourMainnetBalance={yourMainnetBalance}
             yourLocalBalance={yourLocalBalance}
             price={price}
             tx={tx}
             writeContracts={writeContracts}
             readContracts={readContracts}
-            purpose={purpose}
           />
         </Route>
-        <Route path="/mainnetdai">
+        <Route path="/canvasui">
+          <CanvasUI
+            address={address}
+            userSigner={userSigner}
+            mainnetProvider={mainnetProvider}
+            localProvider={localProvider}
+            yourMainnetBalance={yourMainnetBalance}
+            yourLocalBalance={yourLocalBalance}
+            price={price}
+            tx={tx}
+            writeContracts={writeContracts}
+            readContracts={readContracts}
+          />
+        </Route>
+        {/* <Route path="/mainnetdai">
           <Contract
             name="DAI"
             customContract={mainnetContracts && mainnetContracts.contracts && mainnetContracts.contracts.DAI}
@@ -342,7 +359,7 @@ function App(props) {
             contractConfig={contractConfig}
             chainId={1}
           />
-          {/*
+          
             <Contract
               name="UNI"
               customContract={mainnetContracts && mainnetContracts.contracts && mainnetContracts.contracts.UNI}
@@ -351,16 +368,16 @@ function App(props) {
               address={address}
               blockExplorer="https://etherscan.io/"
             />
-            */}
-        </Route>
-        <Route path="/subgraph">
+           
+        </Route> */}
+        {/* <Route path="/subgraph">
           <Subgraph
             subgraphUri={props.subgraphUri}
             tx={tx}
             writeContracts={writeContracts}
             mainnetProvider={mainnetProvider}
           />
-        </Route>
+        </Route> */}
       </Switch>
 
       <ThemeSwitch />
